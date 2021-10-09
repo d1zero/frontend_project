@@ -4,28 +4,49 @@ import SetTitle from "../../hooks/setTitle";
 import Loader from "../../components/Loader/Loader";
 import news from "../../store/news";
 import { observer } from "mobx-react";
-import { useStyles } from "./newsStyles";
+import { Typography, Button } from "@mui/material";
 
 const News = observer(() => {
     SetTitle("News");
-    const classes = useStyles();
     return (
         <div className="news">
-            <h1>News</h1>
+            <Typography variant="h1" align="center">
+                News
+            </Typography>
             {news.loading ? (
                 <Loader />
             ) : (
                 <>
                     {news.news_array.map((item) => (
-                        <Link
-                            key={item.id}
-                            to={`/news/${item.id - 1}`}
-                            className={classes.navLink}
-                        >
-                            <h3>{item.name}</h3>
-                            <img src={item.preview_image} alt={item.name} />
-                            <p>{item.desc}</p>
-                        </Link>
+                        <div key={item.id} style={{ marginTop: "30px" }}>
+                            <Typography variant="h4" gutterBottom>
+                                {item.name}
+                            </Typography>
+                            <img
+                                src={item.preview_image}
+                                alt={item.name}
+                                style={{
+                                    height: "400px",
+                                    maxHeight: "400px",
+
+                                }}
+                            />
+                            <Typography
+                                variant="body2"
+                                gutterBottom
+                                style={{ marginTop: "5px" }}
+                            >
+                                {item.desc}
+                            </Typography>
+                            <Button
+                                variant="contained"
+                                LinkComponent={Link}
+                                to={`/news/${item.id}`}
+                                style={{ marginTop: "5px" }}
+                            >
+                                Подробнее
+                            </Button>
+                        </div>
                     ))}
                 </>
             )}

@@ -10,8 +10,7 @@ function App() {
     return (
         <div className="app" style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
             <Navbar />
-            {/* <Container fixed style={{paddingBottom: '64px'}}> */}
-            <Container fixed >
+            <Container fixed style={{paddingBottom: '64px'}}>
                 <Switch>
                     <Route exact path="/" component={MainPage} />
                     <Route exact path="/news" component={News} />

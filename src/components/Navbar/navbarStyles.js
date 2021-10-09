@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme) => ({
     navLink: {
-        color: "#fff  !important",
+        color: "#fff !important",
         paddingRight: '20px',
         textDecoration: 'none !important',
         "&:hover": {
@@ -13,5 +13,10 @@ export const useStyles = makeStyles((theme) => ({
             color: "#fff",
             textDecoration: 'none',
         },
+    },
+    search: {
+        color: '#fff !important'
+    },
+    textField: {
     },
 }));

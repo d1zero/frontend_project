@@ -18,20 +18,20 @@ const MainPage = observer(() => {
     SetTitle("Main page");
     return (
         <div style={{ marginTop: "100px" }}>
-            <Typography variant="h3" align="center">
+            <Typography variant="h2" align="center" gutterBottom>
                 Hello and welcome to our news portal!
             </Typography>
             <Typography variant="h4" align="center" gutterBottom>
                 Go to{" "}
-                <MUILink component={Link} to="/news">
+                <MUILink component={Link} to="/news" className={classes.navLink}>
                     news
                 </MUILink>{" "}
                 to check out fresh news
             </Typography>
             {!news.loading ? (
-                <Container maxWidth="sm">
+                <Container maxWidth="sm" style={{marginTop: '50px'}}>
                     <Swiper
-                        spaceBetween={50}
+                        spaceBetween={100}
                         slidesPerView={1}
                         navigation={true}
                         autoplay={{ delay: 3000 }}
@@ -42,7 +42,7 @@ const MainPage = observer(() => {
                         {news.news_array
                             .filter((news) => news.slider === true)
                             .map((news) => (
-                                <SwiperSlide className={classes.slide}>
+                                <SwiperSlide className={classes.slide} key={news.id}>
                                     <img
                                         src={news.preview_image}
                                         alt={news.name}
