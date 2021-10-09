@@ -15,7 +15,7 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const MainPage = observer(() => {
     const classes = useStyles();
-    SetTitle("Main main page");
+    SetTitle("Main page");
     return (
         <div style={{ marginTop: "100px" }}>
             <Typography variant="h3" align="center">
