@@ -10,7 +10,7 @@ import {
     Typography,
     Container,
 } from "@mui/material";
-import { useStyles } from "./NavbarStyles";
+import { useStyles } from "./navbarStyles";
 
 const Navbar = () => {
     const classes = useStyles();

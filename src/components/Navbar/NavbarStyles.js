@@ -4,13 +4,14 @@ export const useStyles = makeStyles((theme) => ({
     navLink: {
         color: "#fff",
         paddingRight: '20px',
-        textDecoration: 'none',
+        textDecoration: 'none !important',
         "&:hover": {
-            color: "inherit",
+            color: "#fff",
             textDecoration: 'none',
         },
         "&:visited": {
-            color: "inherit",
+            color: "#fff",
+            textDecoration: 'none',
         },
     },
 }));
