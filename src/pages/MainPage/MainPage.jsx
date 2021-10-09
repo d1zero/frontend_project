@@ -17,7 +17,7 @@ const MainPage = observer(() => {
     const classes = useStyles();
     SetTitle("Main main page");
     return (
-        <div style={{marginTop: '100px'}}>
+        <div style={{ marginTop: "100px" }}>
             <Typography variant="h3" align="center">
                 Hello and welcome to our news portal!
             </Typography>
@@ -39,22 +39,20 @@ const MainPage = observer(() => {
                         allowTouchMove
                         loop
                     >
-                        {news.news_array.map((news) => {
-                            if (news.slider === true) {
-                                return (
-                                    <SwiperSlide className={classes.slide}>
-                                        <img
-                                            src={news.preview_image}
-                                            alt={news.name}
-                                            style={{
-                                                height: "300px",
-                                                objectFit: "cover",
-                                            }}
-                                        />
-                                    </SwiperSlide>
-                                );
-                            }
-                        })}
+                        {news.news_array
+                            .filter((news) => news.slider === true)
+                            .map((news) => (
+                                <SwiperSlide className={classes.slide}>
+                                    <img
+                                        src={news.preview_image}
+                                        alt={news.name}
+                                        style={{
+                                            height: "300px",
+                                            objectFit: "cover",
+                                        }}
+                                    />
+                                </SwiperSlide>
+                            ))}
                     </Swiper>
                 </Container>
             ) : (
