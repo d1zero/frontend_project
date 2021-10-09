@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.scss"],"names":[],"mappings":"AAAA,UACI,QAAS,CACT,SAAU,CACV,qBAAsB,CACzB,KAGG,iBAAkB","file":"main.df5d1713.chunk.css","sourcesContent":["body, html {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nhtml {\r\n    overflow-y: scroll;\r\n}"]}
