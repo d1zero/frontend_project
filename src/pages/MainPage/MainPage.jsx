@@ -15,7 +15,7 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const MainPage = observer(() => {
     const classes = useStyles();
-    SetTitle("Main page");
+    SetTitle("Тестовое название");
     return (
         <div style={{ marginTop: "100px" }}>
             <Typography variant="h2" align="center" gutterBottom>
