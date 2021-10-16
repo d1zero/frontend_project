@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../logo.svg";
-import news from "../../store/news";
-import comments from "../../store/comments";
 import {
     AppBar,
     Toolbar,
@@ -23,30 +21,6 @@ const Navbar = () => {
         console.log(searchText);
         setSearchText("");
     };
-
-    React.useEffect(() => {
-        news.setLoading(true);
-        fetch("/articles.json")
-            .then((res) => res.json())
-            .then((data) => {
-                setTimeout(() => {
-                    news.setNews(data);
-                    news.setLoading(false);
-                }, 1000);
-            });
-    }, []);
-
-    React.useEffect(() => {
-        comments.setLoading(true);
-        fetch("/comments.json")
-            .then((res) => res.json())
-            .then((data) => {
-                setTimeout(() => {
-                    comments.setComments(data);
-                    comments.setLoading(false);
-                }, 1000);
-            });
-    }, []);
 
     return (
         <AppBar position="static">

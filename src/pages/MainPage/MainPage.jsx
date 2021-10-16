@@ -2,7 +2,6 @@ import React from "react";
 import SetTitle from "../../hooks/setTitle";
 import { Link } from "react-router-dom";
 import { Link as MUILink, Typography, Container } from "@mui/material";
-import news from "../../store/news";
 import { useStyles } from "./mainPageStyles";
 import { observer } from "mobx-react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,6 +15,21 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 const MainPage = observer(() => {
     const classes = useStyles();
     SetTitle("Main page");
+
+    const [news, setNews] = React.useState()
+    const [loading, setLoading] = React.useState(true)
+    React.useEffect(() => {
+        setLoading(true);
+        fetch("http://demo-api.vsdev.space/api/articles")
+            .then((res) => res.json())
+            .then((data) => {
+                setTimeout(() => {
+                    setNews(data);
+                    setLoading(false);
+                }, 1000);
+            });
+    }, []);
+
     return (
         <div style={{ marginTop: "100px" }}>
             <Typography variant="h2" align="center" gutterBottom>
@@ -28,7 +42,7 @@ const MainPage = observer(() => {
                 </MUILink>{" "}
                 to check out fresh news
             </Typography>
-            {!news.loading ? (
+            {!loading ? (
                 <Container maxWidth="sm" style={{marginTop: '50px'}}>
                     <Swiper
                         spaceBetween={100}
@@ -39,8 +53,8 @@ const MainPage = observer(() => {
                         allowTouchMove
                         loop
                     >
-                        {news.news_array
-                            .filter((news) => news.slider === true)
+                        {news
+                        .filter((news) => news.slider === true)
                             .map((news) => (
                                 <SwiperSlide className={classes.slide} key={news.id}>
                                     <img

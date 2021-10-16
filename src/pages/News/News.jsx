@@ -2,22 +2,34 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SetTitle from "../../hooks/setTitle";
 import Loader from "../../components/Loader/Loader";
-import news from "../../store/news";
 import { observer } from "mobx-react";
 import { Typography, Button } from "@mui/material";
 
 const News = observer(() => {
+    const [news, setNews] = React.useState()
+    const [loading, setLoading] = React.useState(true)
+    React.useEffect(() => {
+        setLoading(true);
+        fetch("http://demo-api.vsdev.space/api/articles")
+            .then((res) => res.json())
+            .then((data) => {
+                setTimeout(() => {
+                    setNews(data);
+                    setLoading(false);
+                }, 1000);
+            });
+    }, []);
     SetTitle("News");
     return (
         <div className="news">
             <Typography variant="h1" align="center">
                 News
             </Typography>
-            {news.loading ? (
+            {loading ? (
                 <Loader />
             ) : (
                 <>
-                    {news.news_array.map((item) => (
+                    {news.map((item) => (
                         <div key={item.id} style={{ marginTop: "30px" }}>
                             <Typography variant="h4" gutterBottom>
                                 {item.name}
