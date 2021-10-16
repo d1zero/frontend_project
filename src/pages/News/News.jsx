@@ -48,7 +48,7 @@ const News = observer(() => {
                                 gutterBottom
                                 style={{ marginTop: "5px" }}
                             >
-                                {item.desc}
+                                {item.shortDesc}
                             </Typography>
                             <Button
                                 variant="contained"
