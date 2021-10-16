@@ -10,7 +10,7 @@ const News = observer(() => {
     const [loading, setLoading] = React.useState(true)
     React.useEffect(() => {
         setLoading(true);
-        fetch("http://demo-api.vsdev.space/api/articles")
+        fetch("https://demo-api.vsdev.space/api/articles")
             .then((res) => res.json())
             .then((data) => {
                 setTimeout(() => {

@@ -16,11 +16,11 @@ const MainPage = observer(() => {
     const classes = useStyles();
     SetTitle("Main page");
 
-    const [news, setNews] = React.useState()
-    const [loading, setLoading] = React.useState(true)
+    const [news, setNews] = React.useState();
+    const [loading, setLoading] = React.useState(true);
     React.useEffect(() => {
         setLoading(true);
-        fetch("http://demo-api.vsdev.space/api/articles")
+        fetch("https://demo-api.vsdev.space/api/articles")
             .then((res) => res.json())
             .then((data) => {
                 setTimeout(() => {
@@ -37,13 +37,17 @@ const MainPage = observer(() => {
             </Typography>
             <Typography variant="h4" align="center" gutterBottom>
                 Go to{" "}
-                <MUILink component={Link} to="/news" className={classes.navLink}>
+                <MUILink
+                    component={Link}
+                    to="/news"
+                    className={classes.navLink}
+                >
                     news
                 </MUILink>{" "}
                 to check out fresh news
             </Typography>
             {!loading ? (
-                <Container maxWidth="sm" style={{marginTop: '50px'}}>
+                <Container maxWidth="sm" style={{ marginTop: "50px" }}>
                     <Swiper
                         spaceBetween={100}
                         slidesPerView={1}
@@ -54,9 +58,12 @@ const MainPage = observer(() => {
                         loop
                     >
                         {news
-                        .filter((news) => news.slider === true)
+                            .filter((news) => news.slider === true)
                             .map((news) => (
-                                <SwiperSlide className={classes.slide} key={news.id}>
+                                <SwiperSlide
+                                    className={classes.slide}
+                                    key={news.id}
+                                >
                                     <img
                                         src={news.preview_image}
                                         alt={news.name}

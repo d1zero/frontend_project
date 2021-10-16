@@ -25,7 +25,7 @@ const NewsDetail = observer((props) => {
 
     React.useEffect(() => {
         setLoading(true);
-        fetch(`http://demo-api.vsdev.space/api/articles/${article_id}`)
+        fetch(`https://demo-api.vsdev.space/api/articles/${article_id}`)
             .then((res) => res.json())
             .then((data) => {
                 setTimeout(() => {
@@ -37,7 +37,7 @@ const NewsDetail = observer((props) => {
 
     React.useEffect(() => {
         setCommentsLoading(true);
-        fetch(`http://demo-api.vsdev.space/api/articles/${article_id}/comments`)
+        fetch(`https://demo-api.vsdev.space/api/articles/${article_id}/comments`)
             .then((res) => res.json())
             .then((data) => {
                 setTimeout(() => {
@@ -52,7 +52,7 @@ const NewsDetail = observer((props) => {
         if (name.length > 0 && comment.length > 0) {
             setCommentsLoading(true);
             fetch(
-                `http://demo-api.vsdev.space/api/articles/${article_id}/comments`,
+                `https://demo-api.vsdev.space/api/articles/${article_id}/comments`,
                 {
                     method: "POST",
                     headers: {
@@ -68,7 +68,7 @@ const NewsDetail = observer((props) => {
                 .then(() => {
                     setCommentsLoading(true);
                     fetch(
-                        `http://demo-api.vsdev.space/api/articles/${article_id}/comments`,
+                        `https://demo-api.vsdev.space/api/articles/${article_id}/comments`,
                     )
                         .then((res) => res.json())
                         .then((data) => {
