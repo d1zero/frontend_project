@@ -11,11 +11,20 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useStyles } from "./navbarStyles";
+import category from "../../store/category";
 
 const Navbar = () => {
     const [searchText, setSearchText] = React.useState("");
 
     const classes = useStyles();
+
+    React.useState(() => {
+        fetch("https://demo-api.vsdev.space/api/categories")
+            .then((res) => res.json())
+            .then((data) => {
+                category.setCategories(data);
+            })
+    }, []);
 
     const search = () => {
         console.log(searchText);

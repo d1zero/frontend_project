@@ -4,10 +4,9 @@ import Loader from "../../components/Loader/Loader";
 import { observer } from "mobx-react";
 import { Typography } from "@mui/material";
 import Comments from "../../components/Comments/Comments";
+import category from "../../store/category";
 
 const NewsDetail = observer((props) => {
-
-
     const [news, setNews] = React.useState();
     const [loading, setLoading] = React.useState(true);
 
@@ -46,10 +45,19 @@ const NewsDetail = observer((props) => {
                         loading="lazy"
                     />
                     <br />
+                    {category?.categories[news.category]?.name ? (
+                        <Typography variant="body1" gutterBottom>
+                            Category:{" "}
+                            {category?.categories[news.category]?.name}
+                        </Typography>
+                    ) : (
+                        ""
+                    )}
+
                     <Typography variant="caption" gutterBottom>
                         Published on {news.date}
                     </Typography>
-                    <Comments article_id={article_id}/>
+                    <Comments article_id={article_id} />
                 </>
             )}
         </div>

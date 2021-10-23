@@ -4,10 +4,12 @@ import SetTitle from "../../hooks/setTitle";
 import Loader from "../../components/Loader/Loader";
 import { observer } from "mobx-react";
 import { Typography, Button } from "@mui/material";
+import category from "../../store/category";
 
 const News = observer(() => {
-    const [news, setNews] = React.useState()
-    const [loading, setLoading] = React.useState(true)
+    const [news, setNews] = React.useState();
+    const [loading, setLoading] = React.useState(true);
+
     React.useEffect(() => {
         setLoading(true);
         fetch("https://demo-api.vsdev.space/api/articles")
@@ -19,7 +21,9 @@ const News = observer(() => {
                 }, 1000);
             });
     }, []);
+
     SetTitle("News");
+
     return (
         <div className="news">
             <Typography variant="h1" align="center">
@@ -40,9 +44,23 @@ const News = observer(() => {
                                 style={{
                                     height: "400px",
                                     maxHeight: "400px",
-
                                 }}
                             />
+                            {category?.categories[item.category - 1]?.name ? (
+                                <Typography
+                                    variant="body1"
+                                    gutterBottom
+                                    style={{ marginTop: "5px" }}
+                                >
+                                    Category:{" "}
+                                    {
+                                        category?.categories[item.category - 1]
+                                            ?.name
+                                    }
+                                </Typography>
+                            ) : (
+                                ""
+                            )}
                             <Typography
                                 variant="body2"
                                 gutterBottom
